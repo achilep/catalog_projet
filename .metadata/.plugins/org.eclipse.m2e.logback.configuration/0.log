@@ -1,0 +1,31 @@
+2019-08-19 10:06:55,323 [Worker-1: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2019-08-19 10:06:58,431 [Worker-1: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Updating Gradle version information cache failed. Using outdated cache.
+2019-08-19 10:11:35,970 [Worker-9: Creating project "catalog_projet"] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.catalog:catalog_projet:0.0.1-SNAPSHOT @ F:\catalog\catalog_projet\pom.xml.
+2019-08-19 10:11:42,351 [Worker-9: Creating project "catalog_projet"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /catalog_projet/src/main/java
+2019-08-19 10:11:42,369 [Worker-9: Creating project "catalog_projet"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /catalog_projet/src/main/resources
+2019-08-19 10:11:42,373 [Worker-9: Creating project "catalog_projet"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /catalog_projet/src/test/java
+2019-08-19 10:11:42,375 [Worker-9: Creating project "catalog_projet"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /catalog_projet/src/test/resources
+2019-08-19 10:11:48,117 [Worker-1: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-08-19 10:11:48,158 [Worker-1: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-19 10:11:48,168 [Worker-1: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-08-19 10:11:48,187 [Worker-1: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-19 10:13:05,528 [Worker-11: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-08-19 10:13:05,620 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-19 10:13:05,626 [Worker-11: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-08-19 10:13:05,655 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-19 10:13:12,153 [Worker-9: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-08-19 10:13:12,258 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-19 10:13:12,275 [Worker-9: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-08-19 10:13:12,305 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-19 10:13:32,799 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2019-08-19 10:13:47,024 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2019-08-19 10:14:21,347 [Worker-12: Launching catalog_projet] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\catalog\catalog_projet
+2019-08-19 10:14:21,350 [Worker-12: Launching catalog_projet] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B tomcat7:run
+2019-08-19 10:19:12,674 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2019-08-19 10:19:17,022 [Worker-11: Launching catalog_projet] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\catalog\catalog_projet
+2019-08-19 10:19:17,050 [Worker-11: Launching catalog_projet] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B tomcat7:run
+2019-08-19 10:19:21,538 [Worker-15: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.catalog:catalog_projet:0.0.1-SNAPSHOT @ F:\catalog\catalog_projet\pom.xml.
+2019-08-19 10:19:23,594 [Worker-15: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-08-19 10:19:23,800 [Worker-15: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-19 10:19:23,809 [Worker-15: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-08-19 10:19:23,895 [Worker-15: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
