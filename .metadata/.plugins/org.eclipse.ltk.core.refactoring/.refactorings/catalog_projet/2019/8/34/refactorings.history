@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;webapp.welcom&apos; to &apos;Welcome&apos;&#x0D;&#x0A;- Original project: &apos;catalog_projet&apos;&#x0D;&#x0A;- Original element: &apos;webapp.welcom&apos;&#x0D;&#x0A;- Renamed element: &apos;webapp.Welcome&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;welcom&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;webapp{welcom.java[welcom" matchStrategy="1" name="Welcome" qualified="false" references="true" similarDeclarations="false" stamp="1566308711214" textual="false" version="1.0"/>
+</session>
