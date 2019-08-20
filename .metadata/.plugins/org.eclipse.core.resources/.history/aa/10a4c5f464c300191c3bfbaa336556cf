@@ -5,21 +5,20 @@
   <artifactId>catalog_projet</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-	<dependencies>
+  <dependencies>
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-web-api</artifactId>
 			<version>6.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.32</version>
-		</dependency>
-	</dependencies>
-
-	<build>
+		</dependency> -->
+  </dependencies>
+  <build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -45,4 +44,8 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+  
 </project>
+
+	
+	
