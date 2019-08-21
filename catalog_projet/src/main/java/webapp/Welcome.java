@@ -1,5 +1,5 @@
 package webapp;
-import controller.welcomecontroller;
+import controller.connetiondb;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +15,14 @@ import java.io.PrintWriter;
 public class Welcome extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+		
+		connetiondb con=new connetiondb();
+		con.getdata();
+        System.out.println("hello");
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 		
-
 	}
+
 	
 
 		

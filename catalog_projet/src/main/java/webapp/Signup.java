@@ -1,5 +1,6 @@
 package webapp;
 
+import controller.signupcontroller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -10,13 +11,26 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/Signup.ca")
 public class Signup extends HttpServlet {
-	
+	protected signupcontroller signup=new signupcontroller();
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
 		request.getRequestDispatcher("/WEB-INF/views/Signup.jsp").forward(request, response);
 		
-
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		String username=request.getParameter("username");
+		signup.registraion(name, username, password);
+
+		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+		
+	}
+
+
 
 
 }
