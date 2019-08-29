@@ -1,0 +1,49 @@
+package controller;
+import com.mysql.jdbc.Connection;
+import java.sql.*;
+import java.sql.SQLException;
+
+public class connetiondb {
+
+    Connection con;
+    Statement st;
+    ResultSet rs;
+    public connetiondb(){
+    try{
+    Class.forName("com.mysql.jdbc.Driver");
+    }catch(ClassNotFoundException e){
+    System.err.println(e);
+    }
+    try{
+    con= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/catalog","root"," ");
+    System.out.println("connected");
+    }catch(SQLException e){
+        System.err.println("error"+e);
+    }
+    }
+    public Connection obtenirconnexion(){return con;}
+    public void getdata(){
+        try {
+            String querry ="select username,name from user";
+            rs=st.executeQuery(querry);
+            System.out.println("from database");
+            while(rs.next()){
+                String firstname = rs.getString("username");
+                String lastname = rs.getString("name");
+                System.out.println("name"+firstname+"lastname"+lastname);
+            }
+        }
+    catch(Exception e){
+    System.out.println(e);
+    }    
+    }
+    /*
+    
+    public static void main(String[] args){
+        
+        connetiondb connection=new connetiondb();
+        connection.getdata();
+    }*/
+
+
+}

@@ -1,0 +1,28 @@
+package controller;
+import java.sql.Statement;
+import java.sql.ResultSet;
+
+public class welcomecontroller {
+	private connetiondb con=new connetiondb();
+	private  ResultSet resultSet;
+	public welcomecontroller() {}
+	
+	public ResultSet rs() {
+		
+	
+			try{
+				
+				Statement statement=con.obtenirconnexion().createStatement();
+				String sql ="select * from product";
+				 resultSet = statement.executeQuery(sql);
+				
+				//con.close();
+				} catch (Exception e) {
+				e.printStackTrace();
+				}
+			return resultSet ;
+	}
+	
+}
+
+

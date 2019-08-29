@@ -1,0 +1,42 @@
+package controller;
+import java.util.ArrayList;
+import java.util.List;
+
+import java.sql.Statement;
+import java.sql.ResultSet;
+
+public class welcomecontroller {
+	private connetiondb con=new connetiondb();
+	private  ResultSet resultSet;
+	private List<ResultSet> res = new ArrayList();
+
+	public welcomecontroller() {}
+	
+	public List<ResultSet> res() {
+		
+	
+			try{
+				
+				Statement statement=con.obtenirconnexion().createStatement();
+				String sql ="select * from product";
+				 resultSet = statement.executeQuery(sql);
+						
+				 while(resultSet.next()){
+					res.add(resultSet);	
+						
+				 }
+						
+				//con.close();
+				} catch (Exception e) {
+				e.printStackTrace();
+				}
+			return res ;
+	}
+	/*public List<ResultSet> res() {
+		return res;
+	}*/
+	
+	
+}
+
+

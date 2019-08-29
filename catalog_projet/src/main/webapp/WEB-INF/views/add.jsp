@@ -1,0 +1,18 @@
+<html>
+ <head>
+  <title>Yahoo!!</title>
+  </head>
+    <body>
+    
+   <H1>Welcome </H2>
+      <p><font color="red">${errorMessage}</font></p>
+	<form action="/Signup.ca" method="POST">
+		product name : <input name="prod_name" type="text" /> 
+		 product  description : <input name="prod_des" type="text"/>
+		  <input type="submit" value="Submit">
+	</form>
+   signup page
+
+   </div>
+ </body>
+</html>

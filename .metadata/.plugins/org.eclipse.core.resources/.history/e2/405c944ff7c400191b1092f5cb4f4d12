@@ -1,0 +1,47 @@
+package controller;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class categorycontroller {
+	PreparedStatement st;
+    ResultSet rs;
+    connetiondb con = new connetiondb();
+    public categorycontroller() {
+    	
+    } 
+    public void registraion_product(String prd_name,String prd_des) {
+    	try {
+        	
+    		String querry ="INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `category_id`) VALUES (NULL, '"+prd_name+"', '"+prd_des+"', NULL)";
+           
+            st=con.obtenirconnexion().prepareStatement(querry);
+            st.executeUpdate();
+            System.out.println("produc add");
+    	}
+    	catch(Exception e){
+    	System.out.println("erro"+e);
+    	e.printStackTrace();
+    	}
+        
+    	
+    }
+    public void registraion_category(String cat_name,String cat_des) {
+    	try {
+    		String querry ="INSERT INTO `category` (`category_id`, `category_name`, `category_description`) VALUES (NULL, '"+cat_name+"', '"+cat_des+"')";
+    		
+            st=con.obtenirconnexion().prepareStatement(querry);
+            st.executeUpdate();
+            System.out.println("produc add");
+    	}
+    	catch(Exception e){
+    	System.out.println("erro"+e);
+    	e.printStackTrace();
+    	}
+        
+    	
+    }
+
+
+
+}

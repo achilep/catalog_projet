@@ -1,0 +1,23 @@
+
+
+<html>
+ <head>
+  <title>Yahoo!!</title>
+  </head>
+    <body>
+   <H1>Welcome </H2>
+
+   the product and category page+welcome
+      <%while(resultSet.next()){
+		%>
+		<tr>
+		<td><%=resultSet.getString("product_name") %></td>
+		<td><%=resultSet.getString("product_description") %></td>
+		<td><%=resultSet.getString("category_id") %></td>
+		
+		</tr>
+		
+		}
+   </div>
+ </body>
+</html>
