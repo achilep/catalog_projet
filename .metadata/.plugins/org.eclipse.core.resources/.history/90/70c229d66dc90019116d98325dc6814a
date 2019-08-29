@@ -1,0 +1,34 @@
+<html>
+ <head>
+  <title>Yahoo!!</title>
+  </head>
+    <body>
+     <nav class="navbar navbar-default">
+
+		<a href="/welcome.ca" class="navbar-brand">HOmee</a>
+        <ul class="nav navbar-nav">
+			<li class="active"><a href="/addcategory.ca">category</a></li>
+			<li><a href="/addproduct.ca">product</a></li>
+			
+		</ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="/Signup.ca">signup</a></li>
+			<li><a href="/Login.ca">Login</a></li>
+		</ul>
+
+	</nav>
+        
+        <div class="container">
+    
+   <H1>signup </H2>
+      <p><font color="red">${errorMessage}</font></p>
+	<form action="/Signup.ca" method="POST">
+		Name : <input name="name" type="text" />
+		 Password : <input name="password" type="password" /> 
+		 username : <input name="username" type="text"/>
+		  <input type="submit" value="Submit">
+	</form>
+	</div>
+	</div>
+ </body>
+</html>

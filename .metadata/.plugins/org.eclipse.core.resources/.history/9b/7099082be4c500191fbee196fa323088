@@ -1,0 +1,19 @@
+
+
+<html>
+ <head>
+  <title>Yahoo!!</title>
+  </head>
+    <body>
+   <H1>Login </H2>
+
+   <form action="/Login.ca" method="POST">
+		 username : <input name="username" type="text"/>
+		 Password : <input name="password" type="password" /> 
+		
+		  <input type="submit" value="login">
+	</form>
+
+   </div>
+ </body>
+</html>

@@ -1,0 +1,17 @@
+<html>
+ <head>
+  <title>Yahoo!!</title>
+  </head>
+    <body>
+    
+   <H1>signup </H2>
+      <p><font color="red">${errorMessage}</font></p>
+	<form action="/Signup.ca" method="POST">
+		Name : <input name="name" type="text" />
+		 Password : <input name="password" type="password" /> 
+		 username : <input name="username" type="text"/>
+		  <input type="submit" value="Submit">
+	</form>
+	</div>
+ </body>
+</html>

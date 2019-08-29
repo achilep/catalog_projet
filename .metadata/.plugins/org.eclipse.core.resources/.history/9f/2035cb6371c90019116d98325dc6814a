@@ -1,0 +1,43 @@
+package webapp;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.categorycontroller;
+import controller.welcomecontroller;
+
+@WebServlet(urlPatterns = "/category.ca")
+public class categoryservlet extends HttpServlet {
+	
+	private categorycontroller cat=new categorycontroller();
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+		
+		welcomecontroller con=new welcomecontroller();
+		categorycontroller cat=new categorycontroller();
+        request.setAttribute("category", cat.list_category());
+		request.getRequestDispatcher("/WEB-INF/views/category.jsp").forward(request, response);
+		
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		 String category_name = request.getParameter("category_name");
+		  String category_id = request.getParameter("category_id");
+		  String category_description = request.getParameter("category_description");
+		  // cat.update(category_id,category_name,category_description);
+		   cat.delete(category_id);
+		  request.setAttribute("categ", cat.list_category());
+		  request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+	    		
+	}
+		
+
+	}
+
+}

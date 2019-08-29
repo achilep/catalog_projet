@@ -1,0 +1,19 @@
+<html>
+ <head>
+  <title>Yahoo!!</title>
+  </head>
+    <body>
+    
+   <H1>Welcome </H2>
+      <p><font color="red">${errorMessage}</font></p>
+	<form action="/photo.ca" method="POST">
+		product name : <input name="prod_name" type="text" /> 
+		 product  description : <input name="prod_des" type="text"/>
+		 file to upload <input type="file" name="file" />
+		  <input type="submit" value="Submit">
+	</form>
+   signup page
+
+   </div>
+ </body>
+</html>

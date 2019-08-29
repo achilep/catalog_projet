@@ -1,0 +1,63 @@
+package webapp;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import controller.productcontroller;
+
+
+
+@WebServlet(urlPatterns = "/addproduct.ca")
+
+public class addproduct extends HttpServlet {
+	
+	protected productcontroller signup=new productcontroller();
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+		request.getRequestDispatcher("/WEB-INF/views/add.jsp").forward(request, response);
+		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		processRequest(request, response);
+		
+		//request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+		
+	}
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/views/add.jsp").forward(request, response);
+		try (PrintWriter out = response.getWriter()) {
+
+		String prod_des = request.getParameter("prod_des");
+		String prod_name = request.getParameter("prod_name");
+		String image = request.getParameter("file");
+		Part part = request.getPart("file");
+		
+		String fileName = signup.extractFileName(part);
+		signup.registration_product(prod_name, prod_des,image,part);
+
+		out.println(fileName);
+
+		out.println("\n" + prod_name);
+		} catch (Exception ex) {
+
+			System.out.println("error" + ex);
+
+		}
+	
+
+
+	}
+
+
+}

@@ -1,0 +1,85 @@
+package webapp;
+import controller.categorycontroller;
+import controller.connetiondb;
+import controller.productcontroller;
+import controller.welcomecontroller;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+
+@WebServlet(urlPatterns = {"/photo"})
+@MultipartConfig(maxFileSize = 16177216)
+public class photoproduct extends HttpServlet{
+	private connetiondb con=new connetiondb();
+	protected productcontroller signup=new productcontroller();
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+		
+		request.getRequestDispatcher("/WEB-INF/views/add.jsp").forward(request, response);
+		
+	}
+		@Override
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+				throws ServletException, IOException {
+				int result = 0;
+			Part part = req.getPart("image");
+			String prod_des = req.getParameter("prod_des");
+			String prod_name = req.getParameter("prod_name");
+			
+	         
+			if(part != null){
+				
+				try{
+					
+					//String fileName = signup.extractFileName(part);
+					//signup.registration_product(prod_name, prod_des,part);
+					PreparedStatement pst;
+
+
+				    InputStream is = part.getInputStream();
+				   // ps.setBlob(1, is);
+				    String query = "INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `image`, `category_id`) VALUES (null, '"
+							+ prod_name + "', '" + prod_des + "', '" + is + "', null)";
+
+					pst = con.obtenirconnexion().prepareStatement(query);
+				    result = pst.executeUpdate();
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}	
+				finally{
+					if(con != null){
+						try{
+							//con.close();
+						}
+						catch(Exception e){
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+			
+			if(result > 0){
+		    	resp.sendRedirect("result.jsp?message=Image+Uploaded");
+		    }
+			else{
+				resp.sendRedirect("result.jsp?message=Some+Error+Occurred");
+			}
+		}
+	
+}

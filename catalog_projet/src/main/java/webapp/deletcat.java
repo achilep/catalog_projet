@@ -1,0 +1,27 @@
+package webapp;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.categorycontroller;
+import controller.productcontroller;
+@WebServlet(urlPatterns = "/deletecat.ca")
+
+public class deletcat extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+		categorycontroller delet=new  categorycontroller(); 
+		String category_id = request.getParameter("category_id");
+		delet.delete(category_id);
+		response.sendRedirect("/category.ca");
+		 
+
+}
+
+
+}

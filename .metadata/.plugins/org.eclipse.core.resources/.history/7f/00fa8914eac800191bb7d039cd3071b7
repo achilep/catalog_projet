@@ -1,0 +1,33 @@
+package webapp;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.Blob;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.welcomecontroller;
+
+@WebServlet(urlPatterns = {"/photo"})
+public class displayimage extends HttpServlet{
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+		welcomecontroller con=new welcomecontroller();
+		
+		 Blob blob = request.getParameter(image);// rs.getBlob("image");
+	        byte byteArray[] = blob.getBytes(1, (int)blob.length());
+	 
+	        response.setContentType("image/gif");
+	        OutputStream os = response.getOutputStream();
+	        os.write(byteArray);
+	        os.flush();
+	        os.close();
+		
+	}
+
+
+}

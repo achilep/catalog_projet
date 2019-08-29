@@ -1,0 +1,28 @@
+package webapp;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.categorycontroller;
+import controller.welcomecontroller;
+
+@WebServlet(urlPatterns = "/productpercategory.ca")
+public class productpercategory extends HttpServlet{
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+		
+		welcomecontroller con=new welcomecontroller();
+		categorycontroller ca=new categorycontroller();
+		String category_id = request.getParameter("category_id");
+        request.setAttribute("categ", ca.list_productpercategory(category_id));
+		request.getRequestDispatcher("/WEB-INF/views/productpercategory.jsp").forward(request, response);
+		
+	}
+	
+
+}

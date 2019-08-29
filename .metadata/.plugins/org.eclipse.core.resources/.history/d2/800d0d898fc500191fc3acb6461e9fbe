@@ -1,0 +1,89 @@
+package controller;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class categorycontroller {
+	PreparedStatement st;
+    ResultSet rs;
+    connetiondb con = new connetiondb();
+    private List<category> cat_res = new ArrayList();
+    public categorycontroller() {
+    	
+    } 
+    public void registraion_product(String prd_name,String prd_des) {
+    	try {
+        	
+    		String querry ="INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `category_id`) VALUES (NULL, '"+prd_name+"', '"+prd_des+"', NULL)";
+           
+            st=con.obtenirconnexion().prepareStatement(querry);
+            st.executeUpdate();
+            System.out.println("produc add");
+    	}
+    	catch(Exception e){
+    	System.out.println("erro"+e);
+    	e.printStackTrace();
+    	}
+        
+    	
+    }
+    public void registraion_category(String cat_name,String cat_des) {
+    	try {
+    		String querry ="INSERT INTO `category` (`category_id`, `category_name`, `category_description`) VALUES (NULL, '"+cat_name+"', '"+cat_des+"')";
+    		
+            st=con.obtenirconnexion().prepareStatement(querry);
+            st.executeUpdate();
+            System.out.println("produc add");
+    	}
+    	catch(Exception e){
+    	System.out.println("erro"+e);
+    	e.printStackTrace();
+    	}
+        
+    	
+    }
+    
+    public List<category> list_category() {
+		int produt_i=0;
+	        	
+	
+			try{
+				
+				Statement statement=con.obtenirconnexion().createStatement();
+				String sql ="select * from category";
+				 rs = statement.executeQuery(sql);
+						
+				 
+						
+					 while (rs.next()) {
+						 
+
+						category   prd = new category();
+						 	 	 
+						    prd.setCategory_id(rs.getString("category_id")); 	 	 	 
+						    prd.setCategory_name(rs.getString("category_name"));
+						    prd.setCategory_description(rs.getString("category_description"));
+						    
+						   
+						    
+						    cat_res.add(produt_i, prd);
+						    produt_i++;
+						}
+						
+						//con.close();
+						} catch (Exception e) {
+						e.printStackTrace();
+						}
+			return cat_res ;
+	}
+	/*public List<ResultSet> res() {
+		return res;
+	}*/
+
+
+
+
+}

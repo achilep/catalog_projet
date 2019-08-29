@@ -1,0 +1,29 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html>
+ <head>
+  <title>Yahoo!!</title>
+  </head>
+    <body>
+   <H1>Welcome </H2>
+
+   the product and category page+welcome
+						     <ol>
+			<c:forEach items="${product}" var="todo">
+			   <li>${todo.product_id}</li>
+			   <li>${todo.product_name}</li>
+			   <li>${todo.product_description}</li>
+			    	 
+			</c:forEach>
+			</ol>
+			<c:forEach items="${category}" var="Category">
+			   <li>${Category.category_id}</li>
+			   <li>${Category.category_name}</li>
+			   <li>${Category.category_description}</li>
+			    	 
+			</c:forEach>
+			</ol>
+
+			      
+   </div>
+ </body>
+</html>

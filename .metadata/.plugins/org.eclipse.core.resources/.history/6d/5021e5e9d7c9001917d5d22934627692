@@ -1,0 +1,44 @@
+package webapp;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.Blob;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.productcontroller;
+import controller.welcomecontroller;
+
+@WebServlet(urlPatterns = {"/modifyproduct.ca"})
+public class modyfyprod extends HttpServlet{
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+		productcontroller to_modify=new  productcontroller(); 
+		String product_id = request.getParameter("product_id");
+		
+		request.setAttribute("prodtoupdate", to_modify.product_to_updad(product_id));
+		request.setAttribute("update", "update");
+		request.getRequestDispatcher("/WEB-INF/views/add&updat.jsp").forward(request, response);
+    	
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		 String prod_name = request.getParameter("prod_name");
+		  String prod_des = request.getParameter("prod_des");
+		  String product_id = request.getParameter("product_id");
+		  // cat.update(category_id,category_name,category_description);
+		  productcontroller modify=new  productcontroller(); 
+		  modify.update(product_id, prod_name, prod_des);
+		  
+		  request.getRequestDispatcher("/product.ca").forward(request, response);
+	    		
+	}
+	
+
+
+}

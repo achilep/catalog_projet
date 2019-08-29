@@ -1,0 +1,56 @@
+package controller;
+import java.util.ArrayList;
+import java.util.List;
+
+import java.sql.Statement;
+import java.sql.ResultSet;
+
+public class welcomecontroller {
+	private connetiondb con=new connetiondb();
+	private  ResultSet rs;
+	private List<product> res = new ArrayList();
+
+	public welcomecontroller() {}
+	
+	public List<product> list_product() {
+		int produt_i=0;
+	        	
+	
+			try{
+				
+				Statement statement=con.obtenirconnexion().createStatement();
+				String sql ="select * from product";
+				 rs = statement.executeQuery(sql);
+						
+				 
+						
+					 while (rs.next()) {
+						 
+
+						product   prd = new product();
+
+						    prd.setProduct_id(rs.getString("product_id")); 	 	 	 
+						    prd.setProduct_name(rs.getString("product_name"));
+						    prd.setProduct_description(rs.getString("product_description"));
+						    prd.setImage(rs.getString("image"));
+						    prd.setCategory_id(rs.getString("category_id"));
+						    
+						    
+						    res.add(produt_i, prd);
+						    produt_i++;
+						}
+						
+						//con.close();
+						} catch (Exception e) {
+						e.printStackTrace();
+						}
+			return res ;
+	}
+	/*public List<ResultSet> res() {
+		return res;
+	}*/
+	
+	
+}
+
+

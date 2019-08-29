@@ -1,0 +1,44 @@
+package webapp;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.categorycontroller;
+import controller.productcontroller;
+
+@WebServlet(urlPatterns = {"/updatecategory.ca"})
+public class updatecate extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+		categorycontroller to_modify=new  categorycontroller(); 
+		String category_id = request.getParameter("category_id");
+		
+		request.setAttribute("prodtoupdate", to_modify.list_category_to_update(category_id));
+		//request.setAttribute("update", "update");
+		request.getRequestDispatcher("/WEB-INF/views/updacat.jsp").forward(request, response);
+    	
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		 String cat_name = request.getParameter("category_name");
+		  String cat_des = request.getParameter("category_des");
+		  String cat_id = request.getParameter("category_id");
+		  // cat.update(category_id,category_name,category_description);
+		  categorycontroller modify=new  categorycontroller(); 
+		  modify.update_categogry(cat_id, cat_name, cat_des);
+		  System.out.print(cat_id);
+		  
+		  request.getRequestDispatcher("/category.ca").forward(request, response);
+	    		
+	}
+	
+
+
+
+}

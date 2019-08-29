@@ -1,0 +1,197 @@
+package controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+public class productcontroller {
+	PreparedStatement st;
+	ResultSet rs;
+	connetiondb con = new connetiondb();
+	private String SAVE_DIR = "images";
+	private List<product> cat_res = new ArrayList();
+
+	public productcontroller() {
+
+	}
+
+	/*public void registraion_product(String prd_name, String prd_des) {
+		try {
+
+			String querry = "INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `category_id`) VALUES (NULL, '"
+					+ prd_name + "', '" + prd_des + "', NULL)";
+
+			st = con.obtenirconnexion().prepareStatement(querry);
+			st.executeUpdate();
+			System.out.println("produc add");
+		} catch (Exception e) {
+			System.out.println("erro" + e);
+			e.printStackTrace();
+		}
+
+	}*/
+
+	public void update(String id, String product_name, String product_description) {
+		try {
+			String querry = "UPDATE `product` SET `category_name` = '" + product_name
+					+ "' WHERE `category`.`category_id` =" + id;
+
+			st = con.obtenirconnexion().prepareStatement(querry);
+			st.executeUpdate();
+			System.out.println(" product update");
+		} catch (Exception e) {
+			System.out.println("erro" + e);
+			e.printStackTrace();
+		}
+
+	}
+
+	public void delete(String id) {
+		try {
+			String querry = "DELETE FROM `product` WHERE `product`.`product_id` = " + id;
+
+			st = con.obtenirconnexion().prepareStatement(querry);
+			st.executeUpdate();
+			System.out.println(" product delete");
+		} catch (Exception e) {
+			System.out.println("erro" + e);
+			e.printStackTrace();
+		}
+
+	}
+
+	/*public void registraion_production(String prd_name, String prd_des) {
+		try {
+			String querry = "INSERT INTO `product` (`product_id`, `product_name`, `product_description`) VALUES (NULL, '"
+					+ prd_name + "', '" + prd_des + "')";
+
+			st = con.obtenirconnexion().prepareStatement(querry);
+			st.executeUpdate();
+			System.out.println("produc add");
+		} catch (Exception e) {
+			System.out.println("erro" + e);
+			e.printStackTrace();
+		}
+
+	}*/
+
+	public List<product> list_product() {
+		int produt_i = 0;
+
+		try {
+
+			Statement statement = con.obtenirconnexion().createStatement();
+			String sql = "select * from product";
+			rs = statement.executeQuery(sql);
+
+			while (rs.next()) {
+
+				product prd = new product();
+
+				prd.setProduct_id(rs.getString("product_id"));
+				prd.setProduct_name(rs.getString("product_name"));
+				prd.setImage(rs.getString("image"));
+				prd.setProduct_description(rs.getString("image"));
+				
+
+				cat_res.add(produt_i, prd);
+				produt_i++;
+			}
+
+			// con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cat_res;
+	}
+	/*
+	 * public List<ResultSet> res() { return res; }
+	 */
+public  void registration_product(String prod_name,String prod_des,String image,Part part) {
+
+	
+				try {
+				String savePath = "F:\\catalog\\cat\\catalog_projet\\catalog_projet\\src\\main\\resources\\img"
+						+ File.separator + SAVE_DIR;
+
+				File fileSaveDir = new File(savePath);
+
+				if (!fileSaveDir.exists()) {
+
+					fileSaveDir.mkdir();
+
+				}
+				String fileName = extractFileName(part);
+				part.write(savePath + File.separator + fileName);
+				connetiondb con = new connetiondb();
+
+				try {
+
+					System.out.println("pret a inssert");
+					String filePath = savePath + File.separator + fileName;
+
+					String query = "INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `image`, `category_id`) VALUES (null, '"
+							+ prod_name + "', '" + prod_des + "', '" + filePath + "', null)";
+					PreparedStatement pst;
+
+					pst = con.obtenirconnexion().prepareStatement(query);
+					
+
+					System.out.println("pret a inssert k");
+					pst.executeUpdate();
+					System.out.println("inssert");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			
+			
+
+
+	}
+
+	public String extractFileName(Part part) {
+
+		String contentDisp = part.getHeader("content-disposition");
+
+		String[] items = contentDisp.split(";");
+
+		for (String s : items) {
+
+			if (s.trim().startsWith("filename")) {
+
+				return s.substring(s.indexOf("=") + 2, s.length() - 1);
+
+			}
+
+		}
+
+		return "";
+
+	}
+
+
+
+	/*
+	 * @Override
+	 * 
+	 * public String getServletInfo() {
+	 * 
+	 * return "Short description";
+	 * 
+	 * }// </editor-fold>
+	 */
+
+}

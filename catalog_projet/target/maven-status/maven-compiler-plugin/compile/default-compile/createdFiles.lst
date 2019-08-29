@@ -1,0 +1,5 @@
+controller\usercontroller.class
+webapp\photoproduct.class
+webapp\addcategory.class
+controller\categorycontroller.class
+controller\productcontroller.class

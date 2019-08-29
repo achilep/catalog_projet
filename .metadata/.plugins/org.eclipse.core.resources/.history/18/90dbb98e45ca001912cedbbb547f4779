@@ -1,0 +1,137 @@
+package controller;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class categorycontroller {
+	PreparedStatement st;
+    ResultSet rs;
+    connetiondb con = new connetiondb();
+    private List<category> cat_res = new ArrayList();
+    private List<category> cat_to_up = new ArrayList();
+    public categorycontroller() {
+    	
+    } 
+    public void update_categogry(String id,String category_name,String category_description) {
+    	try {
+    		String querry ="UPDATE `category` SET `category_name` = '"+category_name+"', `category_description` = '"+category_description+"' WHERE `category`.`category_id` ="+id   ;
+    		
+            st=con.obtenirconnexion().prepareStatement(querry);
+            st.executeUpdate();
+            System.out.println(" category update");
+    	}
+    	catch(Exception e){
+    	System.out.println("erro"+e);
+    	e.printStackTrace();
+    	}
+        
+    }
+    public void delete(String id) {
+    	try {
+    		String querry ="DELETE FROM `category` WHERE `category`.`category_id` = "+id ;
+    		
+            st=con.obtenirconnexion().prepareStatement(querry);
+            st.executeUpdate();
+            System.out.println(" category delete");
+    	}
+    	catch(Exception e){
+    	System.out.println("erro"+e);
+    	e.printStackTrace();
+    	}
+        
+    }
+    
+    public void registraion_category(String cat_name,String cat_des) {
+    	try {
+    		String querry ="INSERT INTO `category` (`category_id`, `category_name`, `category_description`) VALUES (NULL, '"+cat_name+"', '"+cat_des+"')";
+    		
+            st=con.obtenirconnexion().prepareStatement(querry);
+            st.executeUpdate();
+            System.out.println("produc add");
+    	}
+    	catch(Exception e){
+    	System.out.println("erro"+e);
+    	e.printStackTrace();
+    	}
+        
+    	
+    }
+    public List<category> list_category_to_update(String category_id) {
+		int produt_i=0;
+	        	
+	
+			try{
+				
+				Statement statement=con.obtenirconnexion().createStatement();
+				String sql ="select * from category where category_id='"+category_id+"'";
+				 rs = statement.executeQuery(sql);
+						
+				 
+						
+					 while (rs.next()) {
+						 
+
+						category   prd = new category();
+						 	 	 
+						    prd.setCategory_id(rs.getString("category_id")); 	 	 	 
+						    prd.setCategory_name(rs.getString("category_name"));
+						    prd.setCategory_description(rs.getString("category_description"));
+						    
+						   
+						    
+						    cat_to_up.add(produt_i, prd);
+						    produt_i++;
+						}
+						
+						//con.close();
+						} catch (Exception e) {
+						e.printStackTrace();
+						}
+			return cat_to_up ;
+	}
+
+    
+    public List<category> list_category() {
+		int produt_i=0;
+	        	
+	
+			try{
+				
+				Statement statement=con.obtenirconnexion().createStatement();
+				String sql ="select * from category";
+				 rs = statement.executeQuery(sql);
+						
+				 
+						
+					 while (rs.next()) {
+						 
+
+						category   prd = new category();
+						 	 	 
+						    prd.setCategory_id(rs.getString("category_id")); 	 	 	 
+						    prd.setCategory_name(rs.getString("category_name"));
+						    prd.setCategory_description(rs.getString("category_description"));
+						    
+						   
+						    
+						    cat_res.add(produt_i, prd);
+						    produt_i++;
+						}
+						
+						//con.close();
+						} catch (Exception e) {
+						e.printStackTrace();
+						}
+			return cat_res ;
+	}
+	/*public List<ResultSet> res() {
+		return res;
+	}*/
+
+
+
+
+}

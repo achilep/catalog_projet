@@ -1,0 +1,125 @@
+package controller;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class productcontroller {
+	PreparedStatement st;
+    ResultSet rs;
+    connetiondb con = new connetiondb();
+    private List<product> cat_res = new ArrayList();
+    public productcontroller() {
+    	
+    } 
+	
+	 public void registraion_product(String prd_name,String prd_des) {
+	    	try {
+	        	
+	    		String querry ="INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `category_id`) VALUES (NULL, '"+prd_name+"', '"+prd_des+"', NULL)";
+	           
+	            st=con.obtenirconnexion().prepareStatement(querry);
+	            st.executeUpdate();
+	            System.out.println("produc add");
+	    	}
+	    	catch(Exception e){
+	    	System.out.println("erro"+e);
+	    	e.printStackTrace();
+	    	}
+	        
+	    	
+	    }
+	 
+	    public void update(String id,String product_name,String product_description) {
+	    	try {
+	    		String querry ="UPDATE `product` SET `category_name` = '"+product_name+"' WHERE `category`.`category_id` ="+id ;
+	    		
+	            st=con.obtenirconnexion().prepareStatement(querry);
+	            st.executeUpdate();
+	            System.out.println(" product update");
+	    	}
+	    	catch(Exception e){
+	    	System.out.println("erro"+e);
+	    	e.printStackTrace();
+	    	}
+	        
+	    }
+	    public void delete(String id) {
+	    	try {
+	    		String querry ="DELETE FROM `product` WHERE `product`.`product_id` = "+id ;
+	    		
+	            st=con.obtenirconnexion().prepareStatement(querry);
+	            st.executeUpdate();
+	            System.out.println(" product delete");
+	    	}
+	    	catch(Exception e){
+	    	System.out.println("erro"+e);
+	    	e.printStackTrace();
+	    	}
+	        
+	    }
+	    
+	    public void registraion_production(String prd_name,String prd_des) {
+	    	try {
+	    		String querry ="INSERT INTO `product` (`product_id`, `product_name`, `product_description`) VALUES (NULL, '"+prd_name+"', '"+prd_des+"')";
+	    		
+	            st=con.obtenirconnexion().prepareStatement(querry);
+	            st.executeUpdate();
+	            System.out.println("produc add");
+	    	}
+	    	catch(Exception e){
+	    	System.out.println("erro"+e);
+	    	e.printStackTrace();
+	    	}
+	        
+	    	
+	    }
+	    
+	    public List<product> list_product() {
+			int produt_i=0;
+		        	
+		
+				try{
+					
+					Statement statement=con.obtenirconnexion().createStatement();
+					String sql ="select * from product";
+					 rs = statement.executeQuery(sql);
+							
+					 
+							
+						 while (rs.next()) {
+							 
+
+							product   prd = new product();
+							 	 	 
+							    prd.setProduct_id(rs.getString("product_id")); 	 	 	 
+							    prd.setProduct_name(rs.getString("product_name"));
+							    prd. setProduct_description(rs.getString("product_description"));
+							    
+							   
+							    
+							    cat_res.add(produt_i, prd);
+							    produt_i++;
+							}
+							
+							//con.close();
+							} catch (Exception e) {
+							e.printStackTrace();
+							}
+				return cat_res ;
+		}
+		/*public List<ResultSet> res() {
+			return res;
+		}*/
+
+
+
+	    
+	    
+
+	}
+
+	   
+
+
