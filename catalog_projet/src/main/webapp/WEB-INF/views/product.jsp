@@ -56,8 +56,8 @@
 		         <option value="${cat.category_id}">${cat.category_name}</option>
 		         </c:forEach>
 		         </select>
-		 file to upload <input type="file" name="image" value="Upload"/>
-		  <input type="submit" value="Submit">
+		 file to upload <input type="file" name="image" />
+		  <input type="submit" value="add product">
 	</form>
 		
    signup page

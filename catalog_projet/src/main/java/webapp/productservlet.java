@@ -32,7 +32,7 @@ public class productservlet extends HttpServlet {
 		
 	}
 	
-	@Override
+	/*@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		//request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
@@ -40,6 +40,9 @@ public class productservlet extends HttpServlet {
 		  String prd_name = request.getParameter("prod_name");
 		  String prd_des = request.getParameter("prod_des");
 		  InputStream inputStream = null;
+		  System.out.println("53" +prd_name);
+		  System.out.println("53" +prd_des);
+		  System.out.println("53" +category_id);
 		  Part filePart = request.getPart("image");
 		  if (filePart != null) {
 	            // debug messages
@@ -56,7 +59,7 @@ public class productservlet extends HttpServlet {
 		  response.sendRedirect("/product.ca");
 		  //request.getRequestDispatcher("/product.ca").forward(request, response);
 	    
-	}
+	}*/
 
 
 
