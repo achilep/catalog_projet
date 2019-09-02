@@ -21,6 +21,7 @@ public class Welcome extends HttpServlet {
 		welcomecontroller con=new welcomecontroller();
 		categorycontroller cat=new categorycontroller();
         System.out.println("hello");
+        request.setAttribute("user", request.getSession().getAttribute("user"));
         request.setAttribute("product", con.list_product());
         request.setAttribute("category", cat.list_category());
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);

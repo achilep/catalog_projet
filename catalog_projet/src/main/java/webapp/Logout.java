@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/Logout.ca")
 public class Logout extends HttpServlet {
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
-		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
-		
 
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		request.getSession().invalidate();
+		response.sendRedirect("/welcome.ca");
 	}
 }

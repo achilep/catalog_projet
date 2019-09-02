@@ -1,10 +1,14 @@
 package webapp;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +20,7 @@ import controller.productcontroller;
 import controller.welcomecontroller;
 
 
-
+@MultipartConfig(maxFileSize = 16177215)
 @WebServlet(urlPatterns = "/product.ca")
 
 public class productservlet extends HttpServlet {
@@ -32,7 +36,7 @@ public class productservlet extends HttpServlet {
 		
 	}
 	
-	/*@Override
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		//request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
@@ -52,14 +56,37 @@ public class productservlet extends HttpServlet {
 
 	            // obtains input stream of the upload file
 	            inputStream = filePart.getInputStream();
+	            productcontroller prod=new productcontroller();
+	  		  prod.registration_product(prd_name, prd_des, category_id,inputStream);
+	  		 
 	        }
+		    //Blob blob = request.getgetBlob("image");
+		   // System.out.println("he"+blob);
+			//InputStream inputStream = blob.getBinaryStream();
+			/*System.out.println("he"+inputStream);
+			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+			byte[] buffer = new byte[4096];
+			int bytesRead = -1;
+			while ((bytesRead = inputStream.read(buffer)) != -1) {
+				outputStream.write(buffer, 0, bytesRead);
+			}
+			//System.out.println("o"+outputStream);
+			byte[] imageBytes = outputStream.toByteArray();
+			String baseimg = Base64.getEncoder().encodeToString(imageBytes);
+			inputStream.close();
+			outputStream.close();
+			System.out.println("unu"+baseimg);
+			
+		 /* byte bytes=IOUtils.toByteArray(inputStream);
+		  String str= sun.misc.BASE64Encoder().encode(bytes);
+		  
 		  productcontroller prod=new productcontroller();
-		  prod.registration_product(prd_name, prd_des, category_id,inputStream);
-		  // cat.update(category_id,category_name,category_description);
+		 prod.registration_product(prd_name, prd_des, category_id,inputStream);
+		  // cat.update(category_id,category_name,category_description);*/
 		  response.sendRedirect("/product.ca");
 		  //request.getRequestDispatcher("/product.ca").forward(request, response);
 	    
-	}*/
+	}
 
 
 

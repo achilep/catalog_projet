@@ -37,13 +37,16 @@ public class welcomecontroller {
 						    prd.setProduct_name(rs.getString("product_name"));
 						    prd.setProduct_description(rs.getString("product_description"));
 						    Blob blob = rs.getBlob("image");
+						    System.out.println("he"+blob);
 							InputStream inputStream = blob.getBinaryStream();
+							System.out.println("he"+inputStream);
 							ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 							byte[] buffer = new byte[4096];
 							int bytesRead = -1;
 							while ((bytesRead = inputStream.read(buffer)) != -1) {
 								outputStream.write(buffer, 0, bytesRead);
 							}
+							
 							byte[] imageBytes = outputStream.toByteArray();
 							String baseimg = Base64.getEncoder().encodeToString(imageBytes);
 							inputStream.close();

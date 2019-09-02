@@ -166,12 +166,12 @@ public class categorycontroller {
 							inputStream.close();
 							outputStream.close();
 							prd.setBaseimg(baseimg);
-							prd.setCategory_id(rs.getString("category_id"));
+							prd.setCategory_name(rs.getString("category_id"));
 						    res.add(produt_i, prd);
 						    produt_i++;
 						    System.out.println("ok");
 						}
-						
+					 
 						//con.close();
 						} catch (Exception e) {
 						e.printStackTrace();

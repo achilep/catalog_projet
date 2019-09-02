@@ -20,23 +20,23 @@
     <body>
     
      <nav class="navbar navbar-default">
-
-		<a href="/welcome.ca" class="navbar-brand">HOmee</a>
-        <ul class="nav navbar-nav">
-			<li class="active"><a href="/category.ca">category</a></li>
-			<li><a href="/product.ca">product</a></li>
+         <ul class="nav navbar-nav">
+	     	<a href="/welcome.ca" class="navbar-brand">Homee</a>
+        
+			<a class="navbar-brand" href="/category.ca">category</a>
+			<a class="navbar-brand" href="/product.ca">product</a>
+			<a class="navbar-brand" href="/product.ca">product per category </a>
 			
 		</ul>
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="/Signup.ca">signup</a></li>
-			<li><a href="/Login.ca">Login</a></li>
+        	<li><a href="/Logout.ca">Logout</a></li>
 		</ul>
 
 	</nav>
         
         <div class="container">
     
-   <H1>category </H2>
+   <H1>this page is to easyly fin a product  when you the category </H1>
       <c:forEach items="${categ}" var="cate">
 			   
 			   <li><a href="/productpercategory.ca?category_id=${cate.category_id}" > ${cate.category_name}</a></li>
@@ -49,15 +49,12 @@
 			   <li>${tod.product_name}</li>
 			   <li>${tod.product_description}</li>
 			   <li>${tod.category_name}</li>
-			   <li><img src="data:image/jpg;Base64,${todo.baseimg}" width="40" height="50"/></li> 			   			    	 
+			   <li><img src="data:image/jpg;Base64,${tod.baseimg}" width="40" height="50"/></li> 			   			    	 
 			</c:forEach>
-        signup page
+       
 
    </div>
    </div>
-   <footer class="footer">
-		<div>footer content</div>
-	</footer>
 
    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>

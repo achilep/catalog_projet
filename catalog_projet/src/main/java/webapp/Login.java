@@ -23,13 +23,15 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		usercontroller user=new usercontroller();
+		
 		 if(user.userauthentification(username, password)==0) {
 			 request.setAttribute("echec", "invalide user please try again");
 			 request.getRequestDispatcher("/WEB-INF/views/Login.jsp").forward(request, response);
 		 }
 		 else {
+			 request.getSession().setAttribute("user",user.attribute_user(username, password));
+			 response.sendRedirect("/welcome.ca");
 			 
-			 request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response); 
 		 }
 		
 	}

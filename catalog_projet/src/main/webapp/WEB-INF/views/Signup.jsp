@@ -20,15 +20,18 @@
     <body>
      <nav class="navbar navbar-default">
 
-		<a href="/welcome.ca" class="navbar-brand">HOmee</a>
-        <ul class="nav navbar-nav">
-			<li class="active"><a href="/category.ca">category</a></li>
-			<li><a href="/product.ca">product</a></li>
+		<ul class="nav navbar-nav">
+	     	<a href="/welcome.ca" class="navbar-brand">Homee</a>
+        
+			<a class="navbar-brand" href="/category.ca">category</a>
+			<a class="navbar-brand" href="/product.ca">product</a>
+			<a class="navbar-brand" href="/product.ca">product per category </a>
 			
 		</ul>
         <ul class="nav navbar-nav navbar-right">
         <li><a href="/Signup.ca">signup</a></li>
 			<li><a href="/Login.ca">Login</a></li>
+			
 		</ul>
 
 	</nav>
@@ -43,11 +46,9 @@
 		 username : <input name="username" type="text"/>
 		  <input type="submit" value="Submit">
 	</form>
+	${dpuser}
 	</div>
 	</div>
-	<footer class="footer">
-		<div>footer content</div>
-	</footer>
 
    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>

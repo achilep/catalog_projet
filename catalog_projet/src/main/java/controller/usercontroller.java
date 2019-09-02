@@ -1,8 +1,15 @@
 package controller;
 
-import java.sql.PreparedStatement;import java.security.MessageDigest;
+import java.sql.Blob;
+import java.sql.PreparedStatement;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -12,6 +19,9 @@ public class usercontroller {
     ResultSet rs;
     connetiondb con = new connetiondb();
     int result;
+    private List<user> users = new ArrayList();
+    private List<String> unique = new ArrayList();
+    
     // create une session variable pour l objet user appress le login user user;
     public usercontroller() {
     	
@@ -131,10 +141,98 @@ public class usercontroller {
 					
 					}
     	 System.out.println(result);
+    	 
     	return result;
     	
     	
     }
+    public List<String> unique_user(String username ) {
+		int produt_i = 0;
+
+		try {
+
+			Statement statement = con.obtenirconnexion().createStatement();
+			String sql = "select * from user where username='"+username+"'";
+			rs = statement.executeQuery(sql);
+
+			while (rs.next()) {
+
+				user prd = new user();
+				/*prd.setUser_id(rs.getString("user_id"));
+				prd.setName(rs.getString("name"));
+				prd.setUsername(rs.getString("username"));
+				prd.setPassword(rs.getString("password"));
+				/*Blob blob = rs.getBlob("image");
+				InputStream inputStream = blob.getBinaryStream();
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				byte[] buffer = new byte[4096];
+				int bytesRead = -1;
+				while ((bytesRead = inputStream.read(buffer)) != -1) {
+					outputStream.write(buffer, 0, bytesRead);
+				}
+				byte[] imageBytes = outputStream.toByteArray();
+				String baseimg = Base64.getEncoder().encodeToString(imageBytes);
+				inputStream.close();
+				outputStream.close();
+				prd.setBaseimg(baseimg);
+				prd.setCategory_id(rs.getString("category_id"));
+			*/
+
+				unique.add(produt_i, rs.getString("user_id"));
+			produt_i++;
+			}
+		
+
+		// con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return unique;
+}
+
+	public List<user> attribute_user(String username ,String password) {
+		String passwordhash=generateHash(password);
+		int produt_i = 0;
+
+		try {
+
+			Statement statement = con.obtenirconnexion().createStatement();
+			String sql = "select * from user where username='"+username+"' AND password='"+passwordhash+"'";
+			rs = statement.executeQuery(sql);
+
+			while (rs.next()) {
+
+				user prd = new user();
+				prd.setUser_id(rs.getString("user_id"));
+				prd.setName(rs.getString("name"));
+				prd.setUsername(rs.getString("username"));
+				prd.setPassword(rs.getString("password"));
+				/*Blob blob = rs.getBlob("image");
+				InputStream inputStream = blob.getBinaryStream();
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				byte[] buffer = new byte[4096];
+				int bytesRead = -1;
+				while ((bytesRead = inputStream.read(buffer)) != -1) {
+					outputStream.write(buffer, 0, bytesRead);
+				}
+				byte[] imageBytes = outputStream.toByteArray();
+				String baseimg = Base64.getEncoder().encodeToString(imageBytes);
+				inputStream.close();
+				outputStream.close();
+				prd.setBaseimg(baseimg);
+				prd.setCategory_id(rs.getString("category_id"));
+			*/
+
+			users.add(produt_i, prd);
+			produt_i++;
+			}
+
+			// con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
 				
     	
     

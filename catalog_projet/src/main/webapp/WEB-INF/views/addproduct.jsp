@@ -20,15 +20,16 @@
     <body>
      <nav class="navbar navbar-default">
 
-		<a href="/welcome.ca" class="navbar-brand">HOmee</a>
-        <ul class="nav navbar-nav">
-			<li class="active"><a href="/category.ca">category</a></li>
-			<li><a href="/product.ca">product</a></li>
+		<ul class="nav navbar-nav">
+	     	<a href="/welcome.ca" class="navbar-brand">Homee</a>
+        
+			<a class="navbar-brand" href="/category.ca">category</a>
+			<a class="navbar-brand" href="/product.ca">product</a>
+			<a class="navbar-brand" href="/product.ca">product per category </a>
 			
 		</ul>
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="/Signup.ca">signup</a></li>
-			<li><a href="/Login.ca">Login</a></li>
+        	<li><a href="/Logout.ca">Logout</a></li>
 		</ul>
 
 	</nav>
@@ -38,7 +39,7 @@
 	<ol>
 			<H1>add product </H2>
       <p><font color="red">${errorMessage}</font></p>
-	<form action="/addproduct.ca" method="post" enctype="multipart/form-data">
+	<form action="/addproduct.ca" method="POST" enctype="multipart/form-data">
 		product name : <input name="prod_name" type="text" /> 
 		 product  description : <input name="prod_des" type="text"/>
 		 category <select name="category_id">
@@ -51,7 +52,6 @@
 		  <input type="submit" value="add product"/>
 	</form>
 		
-   signup page
    </div>
    </div>
 

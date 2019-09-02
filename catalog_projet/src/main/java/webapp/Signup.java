@@ -1,7 +1,10 @@
 package webapp;
 
+import controller.user;
 import controller.usercontroller;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +27,26 @@ public class Signup extends HttpServlet {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String username=request.getParameter("username");
-		signup.registraion(name, username, password);
-        response.sendRedirect("/welcome.ca");
+		List<String> unique = new ArrayList();
+		unique =signup.unique_user(username);
+		if(unique.size()>1){
+			
+			request.setAttribute("dpuser", "username already user it must be unique");
+			request.getRequestDispatcher("/WEB-INF/views/Signup.jsp").forward(request, response);
+			
+			
+			
+			
+			 	
+		}else {signup.registraion(name, username, password);
+		request.getSession().setAttribute("user",signup.attribute_user(username, password));
+		response.sendRedirect("/welcome.ca");
+		 
+		//request.getRequestDispatcher("/welcome.ca").forward(request, response);
 		//request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 		
+			
+		}
 	}
 
 

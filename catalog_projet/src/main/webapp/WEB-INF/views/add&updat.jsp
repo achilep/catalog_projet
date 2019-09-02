@@ -20,15 +20,16 @@
     <body>
      <nav class="navbar navbar-default">
 
-		<a href="/welcome.ca" class="navbar-brand">HOmee</a>
-        <ul class="nav navbar-nav">
-			<li class="active"><a href="/category.ca">category</a></li>
-			<li><a href="/product.ca">product</a></li>
+		<ul class="nav navbar-nav">
+	     	<a href="/welcome.ca" class="navbar-brand">Homee</a>
+        
+			<a class="navbar-brand" href="/category.ca">category</a>
+			<a class="navbar-brand" href="/product.ca">product</a>
+			<a class="navbar-brand" href="/product.ca">product per category </a>
 			
 		</ul>
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="/Signup.ca">signup</a></li>
-			<li><a href="/Login.ca">Login</a></li>
+        	<li><a href="/Logout.ca">Logout</a></li>
 		</ul>
 
 	</nav>
@@ -37,31 +38,25 @@
 	
 	<ol>
 			<c:forEach items="${prodtoupdate}" var="tod">
-			<form action="/modifyproduct.ca?product_id=${tod.product_id}" method="POST">
+			<form action="/modifyproduct.ca?product_id=${tod.product_id}" method="POST" enctype="multipart/form-data">
 		product name : <input name="prod_name" value="${tod.product_name}" type="text" /> 
 		 product  description : <input name="prod_des" value="${tod.product_description}" type="text"/>
-		 file to upload <input type="file" name="file" value="data:image/jpg;Base64,${todo.baseimg}" width="40" height="50""/>
-		  <input type="submit" value="${update}"/>
+		 Category : <select name="category_id">
+		         <c:forEach items="${category}" var="cat">
+	
+		         <option value="${cat.category_id}">${cat.category_name}</option>
+		         </c:forEach>
+		         </select>
+	
+		 file to upload <input type="file" name="image" />
+		  <input type="submit" value="update product"/>
 	</form>
 			 
 			  	</c:forEach>
         
     
-   <H1>update </H2>
-      <p><font color="red">${errorMessage}</font></p>
-	<form action="/photo.ca" method="POST">
-		product name : <input name="prod_name" type="text" /> 
-		 product  description : <input name="prod_des" type="text"/>
-		 file to upload <input type="file" name="file" value="Upload"/>
-		  <input type="submit" value="Submit">
-	</form>
-   signup page
+      </div>
    </div>
-   </div>
-
-<footer class="footer">
-		<div>footer content</div>
-	</footer>
 
    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
