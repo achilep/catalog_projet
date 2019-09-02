@@ -7,7 +7,7 @@
 	<display-name>catalog t</display-name>
 
 	<welcome-file-list>
-		<welcome-file>welcome.ca</welcome-file>
+		<welcome-file>welcome.cq</welcome-file>
 	</welcome-file-list>
 
 </web-app>

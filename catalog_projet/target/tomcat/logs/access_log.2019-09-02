@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [02/Sep/2019:00:00:07 -0700] "POST /Signup.ca HTTP/1.1" 200 1417 http-bio-8080-exec-8 44
+0:0:0:0:0:0:0:1 - - [02/Sep/2019:00:00:07 -0700] "GET /webjars/jquery/1.9.1/jquery.min.js HTTP/1.1" 404 1019 http-bio-8080-exec-8 10

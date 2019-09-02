@@ -1,0 +1,3 @@
+after clone the projet  
+inside src\main\resources you will fin q daatabase in mysql 5 inport it
+after run the projet by using tomcat7

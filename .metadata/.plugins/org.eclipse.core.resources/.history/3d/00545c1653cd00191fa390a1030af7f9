@@ -4,10 +4,10 @@
 	version="3.0">
 	
 
-	<display-name>catalog t</display-name>
+	<display-name>To do List</display-name>
 
 	<welcome-file-list>
-		<welcome-file>welcome.ca</welcome-file>
+		<welcome-file>Login.ca</welcome-file>
 	</welcome-file-list>
 
 </web-app>
